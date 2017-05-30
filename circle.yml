@@ -16,11 +16,6 @@ deployment:
             key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
         deployment_group: weatherassignment-deployment-group
 
-
-
-  post:
-    - sudo chown -R $(whoami):$(whoami) /var/www/weatherassignment/
-
 database:
   override:
     # replace CircleCI's generated database.yml
