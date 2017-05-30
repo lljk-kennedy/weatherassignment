@@ -2,7 +2,7 @@ deployment:
   staging:
     branch: master
     commands:
-      - ./var/www/weatherassignment/rails s
+      - bin/rails db:migrate RAILS_ENV=development
     codedeploy:
       weatherassignment:
         application_root: /
@@ -16,14 +16,10 @@ deployment:
             key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
         deployment_group: weatherassignment-deployment-group
 
-
-
-  post:
-    - bin/rails db:migrate RAILS_ENV=development
-
 database:
   override:
     # replace CircleCI's generated database.yml
     - cp config/database.yml.ci config/database.yml
     - bundle exec rake db:create db:schema:load
+    - bin/rails db:migrate RAILS_ENV=development
 
