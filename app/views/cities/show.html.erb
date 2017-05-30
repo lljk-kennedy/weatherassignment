@@ -14,13 +14,18 @@
 
 		<div class="container" style="background-color: white; border:1px solid black">
 
-			<% @city[:list].in_groups_of(4, false) do |group| %>
+			<% @city[:list].in_groups_of(4, false).each_with_index do |group, i| %>
+			<% i = i + 1 %>
+
 			<table class="table table-sm" style="padding-bottom: 2em; padding-top: 2em; border-spacing: 1em 0;border-collapse: separate; border-bottom:  1px solid black;" >
 				<thead>
-					<% group.each_with_index do |day, i| %>
+					<% group.each_with_index do |day, j| %>
+					<% j = j + 1 %>
 					<th class="text-center table-info">
 						<div>
-							<%= link_to Time.at(day[:dt]).strftime("%b %d"),  searchDay: i+1 %> 
+							<% logger.info "#{Time.at(day[:dt]).strftime("%b %d")}, #{i} ,#{j}, (#{i} * #{j}) " %>
+							<% @day = i * j %>
+							<%= link_to Time.at(day[:dt]).strftime("%b %d"),  searchDay: @day %> 
 							<br />
 							<small><%= Time.at(day[:dt]).strftime("%a") %></small>
 						</div>
@@ -47,6 +52,7 @@
 
 							</span>
 						</td>
+
 						<% end  %>
 					</tr>
 				</tbody>

@@ -14,6 +14,7 @@ class CitiesController < ApplicationController
 			if (params[:searchDay].to_i >=1 and params[:searchDay].to_i < 16)
           			#@photo = City.getPhoto(params[:id])
           			@city = City.find(params[:id])
+          			@day = params[:searchDay]
           			render action: 'display', id: params[:id], day: params[:searchDay]
        			else
        				render_404
