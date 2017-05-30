@@ -1,8 +1,6 @@
 deployment:
   staging:
     branch: master
-    commands:
-      - bin/rails db:migrate RAILS_ENV=development
     codedeploy:
       weatherassignment:
         application_root: /
