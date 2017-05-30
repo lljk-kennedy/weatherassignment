@@ -13,3 +13,14 @@ deployment:
             bucket: weatherassignment
             key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
         deployment_group: weatherassignment-deployment-group
+
+dependencies:
+  pre:
+    - gem install rails
+    - gem install rake
+
+database:
+  override:
+    # replace CircleCI's generated database.yml
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load
