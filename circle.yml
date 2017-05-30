@@ -16,9 +16,7 @@ deployment:
             key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
         deployment_group: weatherassignment-deployment-group
 
-dependencies:
-  post:
-    - sudo chown -R $(whoami):$(whoami) /var/www/weatherassignment/
+  
 
 database:
   override:
