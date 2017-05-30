@@ -16,6 +16,11 @@ deployment:
             key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
         deployment_group: weatherassignment-deployment-group
 
+
+
+  post:
+    - bin/rails db:migrate RAILS_ENV=development
+
 database:
   override:
     # replace CircleCI's generated database.yml
