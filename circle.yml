@@ -1,6 +1,8 @@
 deployment:
   staging:
     branch: master
+    commands:
+      - ./var/www/weatherassignment/rails s
     codedeploy:
       weatherassignment:
         application_root: /
@@ -18,9 +20,14 @@ dependencies:
   pre:
     - gem install rails
     - gem install rake
+    - rails db:migrate RAILS_ENV=development
+
+  post:
+    - sudo chown -R $(whoami):$(whoami) /var/www/weatherassignment/
 
 database:
   override:
     # replace CircleCI's generated database.yml
     - cp config/database.yml.ci config/database.yml
     - bundle exec rake db:create db:schema:load
+
