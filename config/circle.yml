@@ -1,0 +1,15 @@
+deployment:
+  staging:
+    branch: master
+    codedeploy:
+      weatherassignment:
+        application_root: /
+        region: eu-west-1
+        deployment_group: staging-instances
+        deployment_config: CodeDeployDefault.AllAtOnce
+        revision_location:
+          revision_type: S3
+          s3_location:
+            bucket: weatherassignment
+            key_pattern: weatherassignment-{BRANCH}-{SHORT_COMMIT}
+        deployment_group: weatherassignment-deployment-group
