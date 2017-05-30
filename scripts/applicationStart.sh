@@ -1,2 +1,2 @@
 #!/bin/sh
-rails restart
+rails server
