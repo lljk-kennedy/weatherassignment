@@ -20,6 +20,7 @@ dependencies:
   pre:
     - gem install rails
     - gem install rake
+    - gem install therubyracer
     - rails db:migrate RAILS_ENV=development
 
   post:
