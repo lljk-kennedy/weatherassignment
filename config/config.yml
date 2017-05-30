@@ -1,0 +1,17 @@
+defaults: &defaults
+  audiocast_uri_format: http://blablalba/blabbitybla/yadda
+  WEATHER_API_BASE_URL: http://api.openweathermap.org/data/2.5/forecast
+  WEATHER_APP_ID: bfa2cf09c54b38f69a0eb617e2ea57b3
+  GOOGLE_API_KEY: AIzaSyDs_WMIT_2I10AqA_vlTRYiVyov2Jzhd40
+  GOOGLE_SEARCH_ENGINE_ID: 003860170648715383525:7ds0wpfjxoo
+  
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
