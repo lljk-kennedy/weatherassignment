@@ -1,0 +1,65 @@
+<body style="background-color: #ccc">
+<div class="container">
+<%= render 'header' %>
+
+
+<%if @cities.present? %>
+	<div class="jumbotron jumbotron-banner" style="background-image:url('<%= @photo %>'); ">
+		<span class="align-bottom">
+			<h1 style="-webkit-text-stroke: 1px black;color:white;" class="align-text-bottom"><%= @cities[:city][:name] %> 
+				<br />
+				<small>16 day forecast</small>
+			</h1>
+		</span>
+	</div>
+
+<div class="container" style="background-color: white; border:1px solid black">
+
+<% @cities[:list].in_groups_of(4, false) do |group| %>
+	<table class="table table-sm" style="padding-bottom: 2em; padding-top: 2em; border-spacing: 1em 0;border-collapse: separate; border-bottom:  1px solid black;" >
+		<thead>
+			<% group.each_with_index do |day, i| %>
+				<th class="text-center table-info">
+					<div>
+						<%= link_to Time.at(day[:dt]).strftime("%b %d"), controller: 'cities', searchCity: @thisCity, searchDay: i+1 %> 
+						<br />
+						<small><%= Time.at(day[:dt]).strftime("%a") %></small>
+					</div>
+					</span>
+				</th>
+			<% end %>
+		</thead>
+		<tbody>
+
+          		<tr >
+              		<% group.each do |day| %>
+					<td style="border-top: 0; text-align: center;">
+						
+						<span style="float:right;">
+							<small><span style="color: blue;"><strong >Low. </strong><%= (day[:temp][:min]).round %> &deg;</span></small>
+							<br />
+							<small><span style="color:red "><strong >High. </strong><%= (day[:temp][:max]).round %> &deg;</span></small>
+						</span>
+
+					<img class="img-fluid " src="http://openweathermap.org/img/w/<%= day[:weather][0][:icon] %>.png" alt="Weather">
+					
+					<span style="float:left; text-align: center;">
+						<strong>Avg. </strong>
+						<br />
+						<%= ((day[:temp][:morn] + day[:temp][:day] + day[:temp][:eve] + day[:temp][:night]) / 4).round %> &deg;
+
+					</span>
+					</td>
+
+				<% end  %>
+          		</tr>
+		</tbody>
+	</table>
+	<% end %>
+</div>
+
+
+<%end%>
+</div>
+</body>
+   

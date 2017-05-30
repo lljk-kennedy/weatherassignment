@@ -1,0 +1,96 @@
+<body class="gradient">
+<div class="container">
+	<%= render 'header' %>
+	<div class="jumbotron jumbotron-banner" style="background-image:url('<%= @photo %>'); ">
+		<h1 style="-webkit-text-stroke: 1px black;color:white;"><%= @cities[:city][:name] %> <small> forecast for <%= Time.at(@cities[:list][@day.to_i][:dt]).strftime("%A %b %d")%></small></h1>
+	</div>
+  
+  	<p><%= @photos_json %>
+  	<div class="container" style="background-color: white; border:1px solid black">
+            	<div class="row">
+    			<div class="col">
+      				<div class="media">
+  					<img class="d-flex m-3" src="http://openweathermap.org/img/w/<%= @cities[:list][@day.to_i][:weather][0][:icon] %>.png" alt="Weather">
+  					<div class="media-body m-3">
+  						<h3 class="mt-0"><%= @cities[:list][@day.to_i][:weather][0][:main].titleize %></h3>
+    						<h6 class="mt-0"><%= @cities[:list][@day.to_i][:weather][0][:description].titleize %></h6>
+  					</div>
+				</div>
+				<table class="table border-0">
+					<tr >
+						<td class="border-0" style="width: 60%" >Pressure</td>
+						<td class="border-0"><%= @cities[:list][@day.to_i][:pressure] %> Pa</td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Humidity</td>
+						<td class="border-0"><%= @cities[:list][@day.to_i][:humidity] %> %</td>
+					</tr>
+				</table>
+    			</div>
+    			<div class="col">
+    				<table class="table border-0">
+					<tr >
+						<td class="border-0" style="width: 60%" ><h3>Avg. Tem</h3></td>
+						<td class="border-0 temp"><h3><%= ((@cities[:list][@day.to_i][:temp][:morn] + @cities[:list][@day.to_i][:temp][:day] + @cities[:list][@day.to_i][:temp][:eve] + @cities[:list][@day.to_i][:temp][:night]) / 4).round %> &deg;</h3></td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Morning</td>
+						<td class="border-0 temp" ><%= @cities[:list][@day.to_i][:temp][:morn] %> &deg;</td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Day</td>
+						<td class="border-0 temp"><%= @cities[:list][@day.to_i][:temp][:day] %> &deg;</td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Evening</td>
+						<td class="border-0 temp"><%= @cities[:list][@day.to_i][:temp][:eve] %> &deg;</td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Night</td>
+						<td class="border-0 temp"><%= @cities[:list][@day.to_i][:temp][:night] %> &deg;</td>
+					</tr>
+				</table>
+    			</div>
+    			<div class="col">
+    				<table class="table border-0">
+    					<tr>
+						<td class="border-0" style="width: 60%"><h3>Cloudiness</h3></td>
+						<td class="border-0"><h3><%= @cities[:list][@day.to_i][:clouds] %> %</h3></td>
+					</tr>
+					<tr >
+						<td class="border-0" style="width: 60%" >Wind Speed</td>
+						<td class="border-0"><%= @cities[:list][@day.to_i][:speed] %> m/s&deg;</td>
+					</tr>
+					<tr>
+						<td class="border-0" style="width: 60%">Wind Direction</td>
+						<td class="border-0"><%= @cities[:list][@day.to_i][:deg] %> degrees</td>
+					</tr>
+				</table>
+    			</div>
+  		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	// Function returns a color based on whatever logic you want
+	$(document).ready(function(){
+		$('td.temp').each(function() {
+		      	var text = parseInt($(this).text());
+		      	console.log(parseInt($(this).text()));
+			if (-100< text &&  text <= 0) {
+				$(this).css('color', 'blue');
+			} else if (0 < text && text <= 10) {
+				$(this).css('color', 'lightblue');
+			}
+			else if (10 < text && text <= 20) {
+				$(this).css('color', 'green');
+			}
+			else if (20 < text && text <= 30) {
+				$(this).css('color', 'orange');
+			}
+			else if (30 < text ) {
+				$(this).css('color', 'red');
+			}
+		    })
+	})
+</script>

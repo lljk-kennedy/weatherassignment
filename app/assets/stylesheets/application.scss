@@ -1,0 +1,23 @@
+
+
+@import "bootstrap";
+body{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ba6fbc+23,5c9fd6+50,689dc9+55,8de0b4+76 */
+background: #ba6fbc; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ba6fbc 23%, #5c9fd6 50%, #689dc9 55%, #8de0b4 76%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  #ba6fbc 23%,#5c9fd6 50%,#689dc9 55%,#8de0b4 76%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  #ba6fbc 23%,#5c9fd6 50%,#689dc9 55%,#8de0b4 76%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba6fbc', endColorstr='#8de0b4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+background-repeat: no-repeat;
+	
+}
+
+html, body {
+     height: 100%;
+}
+
+.jumbotron-banner {
+	background-size:100% 100%; 
+	height: 15em;
+	background-color: #f5c3b2;
+}
