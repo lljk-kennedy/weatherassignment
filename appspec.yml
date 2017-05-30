@@ -9,6 +9,6 @@ permissions:
     group: ec2-user
 hooks:
   AfterInstall:
-    - location: scripts/AfterInstall.sh
+    - location: scripts/afterInstall.sh
   ApplicationStart:
-    - location: scripts/ApplicationStart.sh
+    - location: scripts/applicationStart.sh
