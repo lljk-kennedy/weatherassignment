@@ -12,4 +12,4 @@ hooks:
   #   - location: scripts/afterInstall.sh
    ApplicationStart:
      - location: scripts/applicationStart.sh
-     - runas: ec2-user
+       runas: ec2-user
