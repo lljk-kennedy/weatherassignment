@@ -8,8 +8,8 @@ permissions:
     owner: ubuntu
     group: ubuntu
 hooks:
-  # AfterInstall:
-  #   - location: scripts/afterInstall.sh
+   AfterInstall:
+     - location: scripts/afterInstall.sh
    ApplicationStart:
      - location: scripts/applicationStart.sh
        runas: ubuntu
